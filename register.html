@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login page
+    <title>register page
     </title>
 
 </head>
@@ -17,15 +17,14 @@
         font-family: Arial, Helvetica, sans-serif;
         color: rgb(0, 0, 0);
     }
-
     body {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         background: url("background.jfif") no-repeat;
-        background-position: 100px;
-        background-size: 1000px;
+        background-position: center;
+        background-size: cover;
     }
 
     header {
@@ -86,105 +85,50 @@
         color: aqua;
     }
 
-    .wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 300px;
-        height: 300px;
-        background: transparent;
-        border: 2px solid rgb(6, 64, 75);
-        border-radius: 20px;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        transition: height .2s ease;
-
-        position: relative;
-    }
-
     .wrapper2 {
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 300px;
-        height: 300px;
-        background: transparent;
+        width: auto;
+        height: auto;
+        padding: 20px;
         border: 2px solid rgb(6, 64, 75);
         border-radius: 20px;
         backdrop-filter: blur(20px);
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
         transition: height .2s ease;
         position: relative;
     }
 
-    .wrapper.active-popup {
-        transform: scale(1);
-    }
 
-    .wrapper.active {
-        height: 520px;
-    }
-
-    .wrapper .form-box {
+    .wrapper2 .login {
         width: 100%;
         height: 100%;
-
-    }
-
-    .wrapper .form-box .login {
-
-        transition: transform .18s ease;
-        transform: translateX(0);
-    }
-
-    .wrapper.active .form-box .login {
-        transition: none;
-        transform: translateX(-400px)
-    }
-
-    .wrapper2 .form-box .register {
-        position: absolute;
-        transition: none;
-        transform: translateX(400);
-    }
-
-    .wrapper2.active .form-box .register {
-        transition: transform .18s ease;
-        transform: translateX(400px);
-    }
-
-    .wrapper .icon-close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 45px;
-        height: 45px;
-        background: rgb(77, 106, 185);
-        font-size: 2em;
-        color: rgb(228, 228, 231);
+        padding: 10px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        border-bottom-left-radius: 20px;
-        cursor: pointer;
-        z-index: 1;
+        flex-direction: column;
     }
 
-    .form-box h2 {
+    .input-box{
+    position: relative;
+   width: 100%;
+   height: 50%;
+    border-bottom: 2px solid black;
+    margin: 30px 0;}
+
+    .input-box label{
+    position: absolute;
+    top:10%;
+    left:5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+    .register h2 {
         font-size: 2em;
-        color: rgb(151, 216, 241);
-        text-align: center;
+    color: rgb(151, 216, 241);
+    text-align: center;
     }
 
     .btn {
@@ -195,7 +139,32 @@
         outline: none;
         border-radius: 6px;
         cursor: pointer;
+        
     }
+
+    .input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+.input-box input:focus~label ,
+.input-box input:valid~label{
+top: -5px;
+}
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    top:-10px ;
+    font-size: 1.2em;
+    color: black;
+   
+}
 </style>
 
 <body>
@@ -213,69 +182,52 @@
     </header>
 
     <div class="wrapper2">
-        <div class="form-box register">
-            <h2>registration</h2>
-            <form action="#">
+        <div class="register">
+            <h2>register</h2>
+            <form class="form-box" action="#">
                 <div class="input-box">
                     <span class="icon">
+                       
                         <ion-icon name="person-outline"></ion-icon>
+                        
                     </span>
+                    <label>username</label><br>
                     <input type="text" required>
 
-                </div><br>
+                </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail-outline"></ion-icon>
                     </span>
+                    <label>email</label><br>
                     <input type="email" required>
-                    <label>email</label>
-                </div><br>
+                    
+                </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                     </span>
+                    <label>password</label><br>
                     <input type="password" required>
-                    <label>password</label>
-                </div> <br>
-
-
+                    
+                </div> 
                 <div class="remember-forget">
                     <label> <input type="checkbox"> i agree to terms and conditions</label>
-
                 </div> <br>
-                <button type="submit" class="btn">register</button> <br>
+                <button type="submit" class="btn">register</button> 
                 <div class="login-register"><br>
                     <p> already have an account?
-                        <a href="/login.html" class="login-link">login</a></p>
+                        <a href="/login.html" class="login-link">login</a></p><br>
                 </div>
             </form>
         </div>
 
 
     </div>
-    <script>
-        const wrapper = document.querySelector('.wrapper');
-        const loginLink = document.querySelector('.login');
-        const registerLink = document.querySelector('.register');
-        const btn_popup = document.querySelector('.btnlogin-popup');
-        const iconClose = document.querySelector('.icon-close');
-        registerLink.addEventListener('click', () => {
-            wrapper.classList.add('active');
-        });
-
-        loginLink.addEventListener('click', () => {
-            wrapper.classList.remove('active');
-        });
-        iconClose.addEventListener('click', () => {
-            wrapper.classList.remove('active');
-        });
-        btn_popup.addEventListener('click', () => {
-            wrapper.classList.toggle('active');
-        });
-    </script>
+  
+ 
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script></body>
 
-</body>
-
-</html>
+    </html>
